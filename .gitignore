@@ -1,6 +1,11 @@
 .DS_Store
 node_modules
 /coverage
+
+dist/*
+!dist/static/*
+!dist/json-db/*
+
 # local env files
 .env
 .env.*.local

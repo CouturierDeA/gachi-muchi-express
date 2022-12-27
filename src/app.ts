@@ -40,7 +40,6 @@ function onExit(log: string) {
     }
 }
 process.on('SIGTERM', onExit('SIGTERM'));
-process.on('SIGKILL', onExit('SIGKILL'));
 process.on('SIGINT', onExit('SIGINT'));
 process.on('SIGTERM', onExit('SIGTERM'));
 process.on('SIGUSR2', onExit('SIGUSR2'));
