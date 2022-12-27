@@ -58,8 +58,6 @@ export class RestTodoController {
         @PathVariable() todoId: number,
         @RequestBody() todo: TodoDto,
     ) {
-        console.error('todoId ', todoId)
-        console.error('todo ', todo)
         return await this.todoService.editTodo(todoId, todo)
     }
 
