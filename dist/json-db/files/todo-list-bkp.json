@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Todo 1",
+    "description": "Todo 1 description",
+    "completed": true
+  },
+  {
+    "id": 2,
+    "title": "Todo 2",
+    "description": "Todo 2 description",
+    "completed": true
+  },
+  {
+    "id": 3,
+    "title": "Todo 3",
+    "description": "Todo 2 description",
+    "completed": true
+  },
+  {
+    "id": 4,
+    "title": "Todo 4",
+    "description": "Todo 4 description",
+    "completed": false
+  },
+  {
+    "id": 5,
+    "title": "Todo 5",
+    "description": "Todo 5 description",
+    "completed": false
+  }
+]
