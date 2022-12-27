@@ -48,7 +48,6 @@ export class RestTodoController {
     @PutMapping('/todo')
     @PostMapping('/todo')
     async apiAddTodo(
-        @PathVariable() todoId: number,
         @RequestBody() todo: TodoDto,
     ) {
         return await this.todoService.addTodo(todo)
