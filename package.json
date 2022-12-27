@@ -1,0 +1,26 @@
+{
+  "name": "node-with-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/app.js",
+  "scripts": {
+    "compile": "tsc --watch",
+    "bild": "tsc",
+    "serve": "nodemon dist/app.js --watch",
+    "test": "jest --watchAll"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "*",
+    "@types/reflect-metadata": "^0.1.0",
+    "jest": "^27.2.5",
+    "reflect-metadata": "^0.1.13",
+    "typescript": "*"
+  },
+  "dependencies": {
+    "@types/jest": "^26.0.23",
+    "nodemon": "*",
+    "ts-jest": "^27.0.5"
+  }
+}
