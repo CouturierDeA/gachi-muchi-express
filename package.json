@@ -5,9 +5,10 @@
   "main": "dist/app.js",
   "scripts": {
     "compile": "tsc --watch",
-    "bild": "tsc",
     "serve": "nodemon dist/app.js --watch",
-    "test": "jest --watchAll"
+    "gachi:bild": "tsc",
+    "gachi:test": "jest --watchAll",
+    "gachi:run": "node dist/app.js"
   },
   "author": "",
   "license": "ISC",
