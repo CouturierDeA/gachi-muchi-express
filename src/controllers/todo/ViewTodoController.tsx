@@ -17,7 +17,10 @@ export class ViewTodoController {
     async todoListPageView() {
         const todoList = await this.todoService.getTodoList() || [];
         return <HtmlPage title={'Todo Page'}>
-            <TodoList todoList={todoList}/>
+            <TodoList
+                todoList={todoList}
+                // todoSlot={(props) => (<TodoItem {...props}/>)}
+            />
         </HtmlPage>
     }
 }
