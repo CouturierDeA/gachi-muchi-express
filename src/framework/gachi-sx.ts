@@ -8,7 +8,7 @@ function createElement(name: string | Function, props: { [id: string]: string | 
             else return `${key}=${value}`;
         })
         .join(' ');
-    const joinedContent = content.join("");
+    const joinedContent = content.filter(Boolean).join("");
     if (!name) return `${joinedContent}`
     if (name instanceof Function) return name(props, ...content);
     return `<${name} ${propsstr}>${joinedContent}</${name}>`;
