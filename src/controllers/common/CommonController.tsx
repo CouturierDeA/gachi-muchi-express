@@ -47,16 +47,16 @@ export class CommonController {
         await res.respondWithFile('/static/index.html')
     }
 
-    @GetMapping('/test-query-params')
+    @GetMapping('/test-multiple-query-params')
     async todoPageView(
-        @QueryParams(Number) id: number[],
+        @QueryParams(Number) test: number[],
     ) {
-        return <HtmlPage title={'Test multiple query params'}>
-            Ids:
-            {id?.map(id => <>
-                {id}
-            </>)}
-        </HtmlPage>
+        return <HtmlPage title={'Test multiple query params'}><>
+            <a href="/test-multiple-query-params?test=1,2,3,4,5&id=6,7,8,9">test multiple query params</a>
+            <div>
+                test: {test?.join(', ')}
+            </div>
+        </></HtmlPage>
     }
 
     // @GetMapping('/static/**')
