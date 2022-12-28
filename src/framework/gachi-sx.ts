@@ -1,7 +1,3 @@
-export const GachiSx = {
-    createElement,
-};
-
 function createElement(name: string | Function, props: { [id: string]: string | Function }, ...content: (string)[]) {
     props = props || {};
     const propsstr = Object.keys(props)
@@ -18,5 +14,6 @@ function createElement(name: string | Function, props: { [id: string]: string | 
     return `<${name} ${propsstr}>${joinedContent}</${name}>`;
 }
 
-
-export default GachiSx;
+export default {
+    createElement,
+};
