@@ -4,7 +4,7 @@ type HtmlPageProps = {
     lang?: string,
     charset?: string,
 }
-export function DefaultTemplate(
+export function HtmlPage(
     props: HtmlPageProps,
     content: typeof GACHI_SX,
 ) {
