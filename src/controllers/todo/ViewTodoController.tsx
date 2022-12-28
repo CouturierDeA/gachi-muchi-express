@@ -32,16 +32,13 @@ export class ViewTodoController {
         return <HtmlPage title={todo?.title || `Not found ${todoId}`}><>
             { todo && <>
                 <TodoItem todo={todo}/>
-                <div>
-                    <a href={`/todo/`}>Go back</a>
-                </div>
             </>}
             { !todo && <div>
                 item {todoId} not found with
-                <div>
-                    <a href="/todo/">Go back</a>
-                </div>
             </div>}
+            <div>
+                <a href={`/todo/`}>Go back</a>
+            </div>
         </></HtmlPage>
     }
 }
