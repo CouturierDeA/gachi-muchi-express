@@ -3,7 +3,7 @@ import { ITodo } from '../structs/todo/todo';
 
 export function TodoItem({ todo }: { todo: ITodo }) {
     return <>
-        <h3>ID {todo.id}</h3>
+        <h3><a href={`/todo/${todo.id}`}>ID {todo.id}</a></h3>
         <h4>title {todo.title}</h4>
         <p>description {todo.description}</p>
     </>
