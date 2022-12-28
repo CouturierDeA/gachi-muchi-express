@@ -30,12 +30,8 @@ export class ViewTodoController {
     ) {
         const todo = await this.todoService.getTodo(todoId);
         return <HtmlPage title={todo?.title || `Not found ${todoId}`}><>
-            { todo && <>
-                <TodoItem todo={todo}/>
-            </>}
-            { !todo && <div>
-                item {todoId} not found with
-            </div>}
+            { todo && <TodoItem todo={todo}/>}
+            { !todo && <div>item with id {todoId} not found</div>}
             <div>
                 <a href={`/todo/`}>Go back</a>
             </div>
