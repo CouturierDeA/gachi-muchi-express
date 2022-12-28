@@ -1,10 +1,20 @@
 import GACHI_SX from '../framework/gachi-sx';
-
-export function defaultTemplate(body: typeof GACHI_SX) {
-    return <html lang="ru">
+type HtmlPageProps = {
+    title?: string,
+    lang?: string,
+    charset?: string,
+}
+export function DefaultTemplate(
+    props: HtmlPageProps,
+    content: typeof GACHI_SX,
+) {
+    const { title, lang, charset } = props || {}
+    return <html lang={lang || 'en'}>
     <head>
-        <meta charset="utf-8"/>
+        <meta charset={charset || 'utf-8'}/>
+        {title && <title>{title}</title>}
     </head>
-    <body>{body}</body>
+    <body>{content}</body>
     </html>
 }
+
