@@ -8,6 +8,7 @@ import {
     defineMappingMeta,
 } from "../utils/metadata";
 import {SerializableConstructor} from "../dto/Serializable";
+import { ApiException } from '../exceptions/exceptions';
 
 export const Controller = ControllerDecorator;
 export type MappingType = 'executor' | 'middleware'
@@ -130,6 +131,26 @@ export function QueryParam(key?: string) {
             }));
     }
 }
+
+export function QueryParams(serializer: StringConstructor | NumberConstructor = String) {
+    return function (target: any, propertyKey: string, parameterIndex: number) {
+        const serialize = Reflect.getMetadata('design:paramtypes', target, propertyKey)[parameterIndex];
+        const keyName: string = Object.values(getParamNames(target[propertyKey]))[parameterIndex]
+        addArgInjector(
+            target,
+            propertyKey,
+            parameterIndex,
+            new ArgumentsInjector<Sandbox>(async (sandBox) => {
+                let qs = sandBox.query[keyName]
+                if (!qs) return qs;
+                if (serialize.name !== 'Array') {
+                    throw ApiException.internal(`QueryParams must be of array type, got ${serialize.name}`)
+                }
+                return qs ? new serialize(...qs?.map(q => serializer(q))) : qs;
+            }));
+    }
+}
+
 
 export function IncomingHeaders() {
     return function (target: any, propertyKey: string, parameterIndex: number) {
