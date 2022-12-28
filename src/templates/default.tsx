@@ -1,6 +1,6 @@
 import GACHI_SX from '../framework/gachi-sx';
 type HtmlPageProps = {
-    title?: string,
+    title: string,
     lang?: string,
     charset?: string,
 }
@@ -12,7 +12,7 @@ export function HtmlPage(
     return <html lang={lang || 'en'}>
     <head>
         <meta charset={charset || 'utf-8'}/>
-        {title && <title>{title}</title>}
+        <title>{title}</title>
     </head>
     <body>{content}</body>
     </html>
