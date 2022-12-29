@@ -1,9 +1,9 @@
 import GACHI_SX from '../framework/gachi-sx';
 import { ITodo } from '../structs/todo/todo';
 
-export function TodoItem({ todo }: { todo: ITodo }) {
+export function TodoItem({ todo }: { todo: ITodo}, content?: typeof GACHI_SX) {
     return <>
-        <h3><a href={`/todo/${todo.id}`}>{todo.title}</a></h3>
+        <h3>{ content || <a href={`/todo/${todo.id}`}>{todo.title}</a>}</h3>
         <p>description {todo.description}</p>
     </>
 }
