@@ -18,9 +18,6 @@ export class RouteCreator<T> {
         const {options} = this;
 
         let parentUrl = options?.url || '/'
-        if (!parentUrl.endsWith('/')) {
-            parentUrl = `${parentUrl}/`
-        }
         const meta = getMappingMeta<T>(constructor)
 
         const router: CoreRoute<T>[] = meta.map(metaI => {
