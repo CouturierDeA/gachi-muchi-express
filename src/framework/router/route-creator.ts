@@ -1,3 +1,4 @@
+import { join } from 'path';
 import {CoreRoute} from "../app";
 import {getMappingMeta} from "../utils/metadata";
 import {RouteCtrl} from "../controller/controller/controller";
@@ -17,14 +18,14 @@ export class RouteCreator<T> {
         const name = constructor.name
         const {options} = this;
 
-        let parentUrl = options?.url || '/'
+        let parentUrl = join(options?.url)
         const meta = getMappingMeta<T>(constructor)
 
         const router: CoreRoute<T>[] = meta.map(metaI => {
             const {propertyKey, options} = metaI;
             const {url} = options
             const isRegExp = url instanceof RegExp;
-            let combinedUrl = isRegExp ? url : `${parentUrl}${url ? url : ''}`.replace('//', '/')
+            let combinedUrl = isRegExp ? url : join(parentUrl, url);
 
             return {
                 ...options,
