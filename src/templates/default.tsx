@@ -14,7 +14,7 @@ export function HtmlPage(
         <meta charset={charset || 'utf-8'}/>
         <title>{title}</title>
     </head>
-    <body>{content}</body>
+    <body>{ content }</body>
     </html>
 }
 
@@ -25,5 +25,11 @@ export function ErrorPage(
     return <HtmlPage {...props}>
         {content}
     </HtmlPage>
+}
+
+export function GoTo({ to }: { to: string}, content?: typeof GSX) {
+    return <div>
+        <a href={to}>{ content || 'Go back' }</a>
+    </div>
 }
 

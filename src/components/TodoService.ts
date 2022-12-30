@@ -38,6 +38,7 @@ export class TodoService {
 
     async addTodo(todo: ITodoPayload): Promise<ITodo> {
         const {todoMapper, validator} = this;
+        await validator.uniqueTitle(todo.title);
         await validator.validateTodoBody(todo);
         return await todoMapper.addTodo(todo)
     }
