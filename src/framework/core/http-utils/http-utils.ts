@@ -120,7 +120,7 @@ export function handleApiError(
 }
 
 export function parseBody(stream: ServerHttp2Stream) {
-    return new Promise((resolve, reject) => {
+    return new Promise<string>((resolve, reject) => {
         let chunks = [];
         stream.on('data', function (chunk) {
             chunks.push(chunk);

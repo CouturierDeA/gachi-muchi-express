@@ -1,3 +1,5 @@
+import querystring from 'node:querystring'
+
 export class Serializable<Stream, T> {
     constructor(stream: Stream) {
     }
@@ -22,10 +24,10 @@ export class JSONSerializable<T> extends Serializable<string, T>{
     }
 
     deserialize(serialized: string): T {
-        return JSON.parse(serialized);
+        return querystring.parse(serialized) as T;
     }
 
     serialize() {
-        return JSON.stringify(this)
+        return JSON.stringify(this);
     }
 }

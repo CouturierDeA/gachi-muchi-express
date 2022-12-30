@@ -39,7 +39,7 @@ export class RequestEntity<T = ServerHttp2Stream> {
     stream: ServerHttp2Stream
     private body: any
 
-    private getBody = async () => {
+    getBody = async () => {
         const body = this.body || await parseBody(this.stream);
         this.body = body;
         if (!body) {
