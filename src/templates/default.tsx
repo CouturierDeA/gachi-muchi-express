@@ -18,3 +18,12 @@ export function HtmlPage(
     </html>
 }
 
+export function ErrorPage(
+    props: HtmlPageProps,
+    content: typeof GSX,
+) {
+    return <HtmlPage {...props}>
+        {content}
+    </HtmlPage>
+}
+

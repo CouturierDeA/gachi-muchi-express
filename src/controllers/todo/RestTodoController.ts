@@ -58,7 +58,7 @@ export class RestTodoController {
         @PathVariable() todoId: number,
         @RequestBody() todo: TodoDto,
     ) {
-        return await this.todoService.editTodo(todoId, todo)
+        return await this.todoService.editTodo(todo)
     }
 
     @DeleteMapping('/todo/{todoId}')

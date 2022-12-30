@@ -42,9 +42,9 @@ export class TodoService {
         return await todoMapper.addTodo(todo)
     }
 
-    async editTodo(todoId: number, todo: ITodo): Promise<ITodo> {
+    async editTodo(todo: ITodo): Promise<ITodo> {
         const {todoMapper, validator} = this;
-        await validator.validateTodo({ ...todo, id: todoId });
+        await validator.validateTodo(todo);
         return await todoMapper.editTodo(todo)
     }
 

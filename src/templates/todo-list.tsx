@@ -15,6 +15,7 @@ export function TodoList({ todoList, todoSlot }: { todoList: ITodo[], todoSlot?:
             data-id={todo.id}
         >
             {todoSlot ? todoSlot({ todo }) : <TodoItem todo={todo}/>}
+            <a href={`/todo/edit/${todo.id}`}>Edit</a>
         </li>
     )}</ul>
 }
