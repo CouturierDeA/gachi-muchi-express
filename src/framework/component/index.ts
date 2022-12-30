@@ -34,12 +34,12 @@ export type AutowireOptions = {
 
 export function Autowire(options?: {
     depConstructorName?: string
-    useSingletone?: boolean
+    useSingleton?: boolean
 }) {
     return function (target: Object, propertyKey: string) {
         let type = Reflect.getMetadata('design:type', target, propertyKey);
         defineAutoWire(target.constructor, {
-            useSingleton: options?.useSingletone !== false,
+            useSingleton: options?.useSingleton !== false,
             constructorName: options?.depConstructorName || type.name,
             propertyKey
         })

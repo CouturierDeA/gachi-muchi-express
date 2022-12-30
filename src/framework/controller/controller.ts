@@ -9,6 +9,7 @@ import {
 } from "../utils/metadata";
 import {SerializableConstructor} from "../dto/Serializable";
 import { ApiException } from '../exceptions/exceptions';
+import { getParamNames } from '../utils/getParamNames';
 export const Controller = ControllerDecorator;
 export type MappingType = 'executor' | 'middleware'
 
@@ -90,16 +91,6 @@ export function PatchMapping(url: string) {
             url, method: "PATCH", type: 'executor'
         })
     };
-}
-
-const STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
-const ARGUMENT_NAMES = /([^\s,]+)/g;
-function getParamNames(func): string[] {
-    const fnStr = func.toString().replace(STRIP_COMMENTS, '');
-    let result = fnStr.slice(fnStr.indexOf('(')+1, fnStr.indexOf(')')).match(ARGUMENT_NAMES);
-    if(result === null)
-        result = [];
-    return result;
 }
 
 export function PathVariable(key?: string) {
