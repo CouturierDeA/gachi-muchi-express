@@ -36,8 +36,8 @@ export class TodoValidationService {
         await this.validateTodoBody(todo)
     }
 
-    async uniqueTitle(title: string) {
-        const exist = await this.todoMapper.findTodoWithTitle(title)
+    async uniqueTitle(title: string, todoId?: number) {
+        const exist = await this.todoMapper.findTodoWithTitle(title, todoId)
         if (!!exist) {
             throw ApiException.userError(`Todo title is not unique ${title}`)
         }

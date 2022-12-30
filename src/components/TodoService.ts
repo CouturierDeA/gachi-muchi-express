@@ -45,6 +45,7 @@ export class TodoService {
 
     async editTodo(todo: ITodo): Promise<ITodo> {
         const {todoMapper, validator} = this;
+        await validator.uniqueTitle(todo.title, todo.id);
         await validator.validateTodo(todo);
         return await todoMapper.editTodo(todo)
     }
