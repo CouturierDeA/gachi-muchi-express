@@ -1,4 +1,4 @@
-import GACHI_SX from '../framework/gachi-sx';
+import GSX from '../framework/gsx';
 type HtmlPageProps = {
     title: string,
     lang?: string,
@@ -6,7 +6,7 @@ type HtmlPageProps = {
 }
 export function HtmlPage(
     props: HtmlPageProps,
-    content: typeof GACHI_SX,
+    content: typeof GSX,
 ) {
     const { title, lang, charset } = props || {}
     return <html lang={lang || 'en'}>

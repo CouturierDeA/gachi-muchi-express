@@ -33,7 +33,7 @@ export class ResponseEntity<T = ServerHttp2Stream> {
         return this;
     }
 
-    clearHeaders = (addHeaders: OutgoingHttpHeaders) => {
+    clearHeaders = () => {
         this.headers = {};
         return this;
     }

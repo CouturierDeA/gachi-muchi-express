@@ -10,7 +10,7 @@
     "outDir": "dist",
     "baseUrl": "./",
     "jsx": "react",
-    "reactNamespace": "GACHI_SX",
+    "reactNamespace": "GSX",
     "types": [
       "jest",
       "node"

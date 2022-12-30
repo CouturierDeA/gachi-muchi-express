@@ -32,7 +32,7 @@ export interface Sandbox<T = ServerHttp2Stream> {
 }
 
 
-export const serializator = {
+export const serializer = {
     'number': (num: number) => num.toString(),
     'string': (str: string) => str,
     'boolean': (bool: boolean) => JSON.stringify(bool),
@@ -41,7 +41,7 @@ export const serializator = {
 }
 export const serialize = (data: any) => {
     const dataType = typeof data;
-    const exec = serializator[dataType] || serializator.undefined
+    const exec = serializer[dataType] || serializer.undefined
     return exec(data)
 }
 

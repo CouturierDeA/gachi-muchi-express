@@ -1,7 +1,7 @@
-import GACHI_SX from '../framework/gachi-sx';
+import GSX from '../framework/gsx';
 import { ITodo } from '../structs/todo/todo';
 
-export function TodoItem({ todo }: { todo: ITodo}, content?: typeof GACHI_SX) {
+export function TodoItem({ todo }: { todo: ITodo}, content?: typeof GSX) {
     return <>
         <h3>{ content || <a href={`/todo/${todo.id}`}>{todo.title}</a>}</h3>
         <p>description {todo.description}</p>
@@ -9,9 +9,9 @@ export function TodoItem({ todo }: { todo: ITodo}, content?: typeof GACHI_SX) {
 }
 
 export function TodoList({ todoList, todoSlot }: { todoList: ITodo[], todoSlot?: typeof TodoItem }) {
-    return <ul>{todoList.map(todo =>
+    return <ul class="todo-list">{todoList.map(todo =>
         <li
-            class={'test-123'}
+            class="todo-li"
             data-id={todo.id}
         >
             {todoSlot ? todoSlot({ todo }) : <TodoItem todo={todo}/>}

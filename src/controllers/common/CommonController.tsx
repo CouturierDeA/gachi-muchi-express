@@ -10,7 +10,7 @@ import {
 
 import {ResponseEntity} from "../../framework/entities/ResponseEntity";
 import { HtmlPage } from '../../templates/default';
-import GACHI_SX from '../../framework/gachi-sx';
+import GSX from '../../framework/gsx';
 
 @Controller({
     url: '/'
@@ -49,7 +49,7 @@ export class CommonController {
 
     @GetMapping('/test-multiple-query-params')
     async todoPageView(
-        @QueryParams(Number) test: number[],
+        @QueryParams({ serializer: Number }) test: number[],
     ) {
         return <HtmlPage title={'Test multiple query params'}><>
             <a href="/test-multiple-query-params?test=1,2,3,4,5&id=6,7,8,9">test multiple query params</a>

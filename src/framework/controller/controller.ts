@@ -9,7 +9,6 @@ import {
 } from "../utils/metadata";
 import {SerializableConstructor} from "../dto/Serializable";
 import { ApiException } from '../exceptions/exceptions';
-
 export const Controller = ControllerDecorator;
 export type MappingType = 'executor' | 'middleware'
 
@@ -132,10 +131,12 @@ export function QueryParam(key?: string) {
     }
 }
 
-export function QueryParams(serializer: StringConstructor | NumberConstructor = String) {
+export function QueryParams(options?: { key?: string, serializer?: StringConstructor | NumberConstructor }) {
     return function (target: any, propertyKey: string, parameterIndex: number) {
+        const { key, serializer } = options || {};
+        const defaultSerializer = serializer || String;
         const serialize = Reflect.getMetadata('design:paramtypes', target, propertyKey)[parameterIndex];
-        const keyName: string = Object.values(getParamNames(target[propertyKey]))[parameterIndex]
+        const keyName: string = key || Object.values(getParamNames(target[propertyKey]))[parameterIndex]
         addArgInjector(
             target,
             propertyKey,
@@ -143,10 +144,11 @@ export function QueryParams(serializer: StringConstructor | NumberConstructor = 
             new ArgumentsInjector<Sandbox>(async (sandBox) => {
                 let qs = sandBox.query[keyName]
                 if (!qs) return qs;
+
                 if (serialize.name !== 'Array') {
                     throw ApiException.internal(`QueryParams must be of array type, got ${serialize.name}`)
                 }
-                return qs ? new serialize(...qs?.map(q => serializer(q))) : qs;
+                return qs ? new serialize(...qs?.map(q => defaultSerializer(q))) : qs;
             }));
     }
 }

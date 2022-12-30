@@ -1,7 +1,7 @@
 import {TodoService} from "../../components/TodoService";
-import { Controller, GetMapping, PathVariable } from "../../framework/controller/controller";
+import { Controller, GetMapping, PathVariable, QueryParams } from "../../framework/controller/controller";
 import {Autowire} from "../../framework/component/";
-import GACHI_SX from '../../framework/gachi-sx';
+import GSX from '../../framework/gsx';
 import { HtmlPage } from '../../templates/default';
 import { TodoItem, TodoList } from '../../templates/todo-list';
 
@@ -14,7 +14,9 @@ export class ViewTodoController {
     todoService: TodoService
 
     @GetMapping('')
-    async todoListPageView() {
+    async todoListPageView(
+        @QueryParams() title: string[]
+    ) {
         const todoList = await this.todoService.getTodoList() || [];
         return <HtmlPage title={'Todo Page'}>
             <TodoList
@@ -30,10 +32,10 @@ export class ViewTodoController {
     ) {
         const todo = await this.todoService.getTodo(todoId);
         return <HtmlPage title={todo?.title || `Not found ${todoId}`}><>
-            { todo && <TodoItem todo={todo}/>}
+            { todo && <TodoItem todo={todo}>{ todo.title }</TodoItem>}
             { !todo && <div>item with id {todoId} not found</div>}
             <div>
-                <a href={`/todo/`}>Go back</a>
+                <a href={`/todo`}>Go back</a>
             </div>
         </></HtmlPage>
     }
