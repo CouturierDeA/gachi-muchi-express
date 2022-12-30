@@ -12,7 +12,7 @@ function createElement(name: string | Function, props: { [id: string]: string | 
     const joinedContent = content
         .flat()
         .filter(Boolean)
-        .join("");
+        .join('');
     if (!name) return joinedContent
     if (name instanceof Function) return name(props, ...content);
     return `<${name}${attrs}>${joinedContent}</${name}>`;
