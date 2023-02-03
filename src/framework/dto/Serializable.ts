@@ -21,10 +21,15 @@ export class JSONSerializable<T> extends Serializable<string, T>{
     constructor(stream: string) {
         super(stream);
         Object.assign(this, this.deserialize(stream))
+        return
     }
 
     deserialize(serialized: string): T {
-        return querystring.parse(serialized) as T;
+        try {
+            return JSON.parse(serialized) as T;
+        } catch (e) {
+            return querystring.parse(serialized) as T;
+        }
     }
 
     serialize() {
